@@ -11,3 +11,32 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+
+# neovim XDG_CONFIG_HOME setting
+export XDG_CONFIG_HOME=$HOME/.config
+
+# Customize to your needs...
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)";
+fi
+
+# alias
+alias vim='nvim'
+alias vi='vim'
+
+## ruby
+alias be='bundle exec'
+
+function vg() {
+    vim `git ls-files ~/pixiv | peco`
+}
